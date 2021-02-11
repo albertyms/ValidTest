@@ -18,7 +18,7 @@ public class PersonEntity implements Serializable {
     @Column(name="last_name")
     private String lastName;
     //@Column(name="processing")
-    private Boolean processing;
+    private String processing;
     @Column(name="creation_date")
     private Date creationDate = new Date();
 
@@ -46,11 +46,11 @@ public class PersonEntity implements Serializable {
         this.lastName = lastName;
     }
 
-    public Boolean getProcessing() {
+    public String getProcessing() {
         return processing;
     }
 
-    public void setProcessing(Boolean processing) {
+    public void setProcessing(String processing) {
         this.processing = processing;
     }
 

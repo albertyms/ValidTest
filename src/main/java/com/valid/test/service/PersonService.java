@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PersonService {
@@ -19,6 +20,7 @@ public class PersonService {
 
     public PersonEntity createPerson(PersonEntity person) {
         try {
+            person.setProcessing("false");
             return repository.save(person);
         } catch (Exception e) {
             logger.error("Error:", e);
@@ -40,6 +42,15 @@ public class PersonService {
     public PersonEntity updatePerson(PersonEntity person) {
         try {
             return repository.save(person);
+        } catch (Exception e) {
+            logger.error("Error:", e);
+            return null;
+        }
+    }
+
+    public Optional<PersonEntity> getPerson(Long id) {
+        try {
+            return repository.findById(id);
         } catch (Exception e) {
             logger.error("Error:", e);
             return null;
